@@ -1,5 +1,8 @@
 package im.juniq.board;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BoardService {
     private BoardRepository boardRepository;
 
