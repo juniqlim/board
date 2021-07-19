@@ -1,5 +1,6 @@
 package im.juniq.board;
 
+import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,5 +14,10 @@ public class BoardDBGateway implements BoardRepository {
     @Override
     public Board save(Board board) {
         return boardJpaRepository.save(board);
+    }
+
+    @Override
+    public List<Board> findAll() {
+        return boardJpaRepository.findAll();
     }
 }

@@ -13,6 +13,11 @@ public class BoardServiceIntegrationTest {
 
     @Test
     void save() {
-        assertThat(boardService.save(BoardTest.BOARD)).isEqualTo(BoardTest.BOARD);
+        Board savedBoard = boardService.save(BoardTest.BOARD);
+        Board findedBoard = boardService.findAll().stream()
+            .findFirst()
+            .orElseThrow(() -> new IllegalStateException());
+
+        assertThat(findedBoard).isEqualTo(savedBoard);
     }
 }
