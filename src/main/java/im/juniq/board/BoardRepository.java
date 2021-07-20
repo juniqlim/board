@@ -9,7 +9,7 @@ public interface BoardRepository {
     List<Board> findAll();
 
     class Fake implements BoardRepository {
-        private static final Board BOARD = Board.of("제목", "본문");
+        private static final Board BOARD = Board.of("제목", "본문", "작성자");
 
         @Override
         public Board save(Board board) {

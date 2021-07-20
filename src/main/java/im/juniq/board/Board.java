@@ -1,5 +1,6 @@
 package im.juniq.board;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,17 +14,21 @@ public class Board {
     private long id;
     private String title;
     private String content;
+    private String createdBy;
+    private LocalDateTime createdAt;
 
     protected Board() {
     }
 
-    private Board(String title, String content) {
+    private Board(String title, String content, String createdBy) {
         this.title = title;
         this.content = content;
+        this.content = createdBy;
+        this.createdAt = LocalDateTime.now();
     }
 
-    public static Board of(String title, String content) {
-        return new Board(title, content);
+    public static Board of(String title, String content, String createdBy) {
+        return new Board(title, content, createdBy);
     }
 
     @Override
@@ -35,7 +40,7 @@ public class Board {
             return false;
         }
         Board board = (Board) o;
-        return Objects.equals(title, board.title) && Objects.equals(content, board.content);
+        return id == board.id;
     }
 
     @Override
